@@ -1,2 +1,2 @@
-# java-oo-projects
-Repository to keep back-up of object oriented projects.
+# java-cf5-projects
+This repository keeps back-up of CF5 mini projects and challenges organised in chapters.

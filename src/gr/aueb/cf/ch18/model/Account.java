@@ -6,13 +6,13 @@ package gr.aueb.cf.ch18.model;
 public class Account extends AbstractEntity {
     private String iban;
     private User holder;
-    private double balance;
+    private Double balance;
 
     public Account() {
 
     }
 
-    public Account(String iban, User holder, double balance) {
+    public Account(String iban, User holder, Double balance) {
         this.iban = iban;
         this.holder = new User(holder);
         this.balance = balance;
@@ -34,11 +34,11 @@ public class Account extends AbstractEntity {
         this.holder = new User(holder);
     }
 
-    public double getBalance() {
+    public Double getBalance() {
         return balance;
     }
 
-    public void setBalance(double balance) {
+    public void setBalance(Double balance) {
         this.balance = balance;
     }
 
@@ -59,19 +59,17 @@ public class Account extends AbstractEntity {
 
         Account account = (Account) o;
 
-        if (Double.compare(balance, account.balance) != 0) return false;
         if (!iban.equals(account.iban)) return false;
-        return holder.equals(account.holder);
+        if (!holder.equals(account.holder)) return false;
+        return balance.equals(account.balance);
     }
 
     @Override
     public int hashCode() {
         int result = super.hashCode();
-        long temp;
         result = 31 * result + iban.hashCode();
         result = 31 * result + holder.hashCode();
-        temp = Double.doubleToLongBits(balance);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        result = 31 * result + balance.hashCode();
         return result;
     }
 }

@@ -22,13 +22,13 @@ public class AccountDAOImpl implements IAccountDAO {
     }
 
     @Override
-    public User update(String iban, User newUser) {
+    public Account update(String iban, User newUser) {
         Account oldAccount = accounts.stream()
                         .filter(acc -> acc.getIban().equals(iban))
                         .collect(Collectors.toList()).get(0);
         Account newAccount = new Account(iban, newUser, oldAccount.getBalance());
         accounts.set(accounts.indexOf(oldAccount), newAccount);
-        return newUser;
+        return newAccount;
     }
 
     @Override

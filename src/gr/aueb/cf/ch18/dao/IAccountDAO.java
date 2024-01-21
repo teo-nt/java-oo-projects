@@ -19,9 +19,9 @@ public interface IAccountDAO {
      *
      * @param iban      the iban of the account.
      * @param newUser   the new user of account.
-     * @return          the new user.
+     * @return          the new account.
      */
-    User update(String iban, User newUser);
+    Account update(String iban, User newUser);
 
     /**
      * Delete an account.

@@ -16,12 +16,16 @@ public class ConcurrentFileServer implements Runnable {
         try (BufferedWriter outFd = new BufferedWriter(new OutputStreamWriter(socketFd.getOutputStream()));
                 BufferedReader inFd = new BufferedReader(new InputStreamReader(socketFd.getInputStream())) ) {
 
-            String filename = inFd.readLine();
+            String filePath = inFd.readLine();
             String line ;
-            System.out.println(filename);
-            File file = new File("C:/tmp/resources/" + filename);
+            File file = new File(filePath);
             if (!file.exists()) {
-                outFd.write("This file does not exist in the resources");
+                outFd.write("This file does not exist");
+                outFd.flush();
+                return;
+            }
+            if (!file.isFile()) {
+                outFd.write("Please insert a file path (not folder).");
                 outFd.flush();
                 return;
             }

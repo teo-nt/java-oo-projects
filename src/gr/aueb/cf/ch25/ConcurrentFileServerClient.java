@@ -12,7 +12,7 @@ public class ConcurrentFileServerClient {
         StringBuilder content = new StringBuilder();
         String line = null;
         Scanner sc = new Scanner(System.in);
-        System.out.print("Please insert the filename to print its content: ");
+        System.out.print("Please insert the path of the file to print its content: ");
         path = sc.next().trim();
 
 
